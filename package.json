@@ -1,0 +1,14 @@
+{
+  "name": "node_py_cpp_csvjson",
+  "version": "1.0.0",
+  "description": "learning how to run python, cpp files using nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm server.js"
+  },
+  "author": "Akshat Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

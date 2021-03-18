@@ -1,0 +1,44 @@
+console.log(msg) is same as process.stdout.write(msg)
+
+var exec = require('child_process').exec;
+
+exec('cat index.js, function (err,stdout, stderr ) {
+    console.log('we got the stdout, stdout)
+})
+
+const { exec } = require('child_process');
+
+exec('pwd', (error, stdout, stderr) => {
+  if (error) {
+    console.log(`error: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.log(`stderr: ${stderr}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+});
+
+as it takes content in buffer, so if a comand has a large output then it will creaete problems  
+
+
+const { spawn } = require('child_process');
+
+const child = spawn('find', ['/']);
+
+child.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+child.stderr.on('data', (data) => {
+  console.log(`stderr: ${data}`);
+});
+
+child.on('error', (error) => console.log(`error: ${error.message}`));
+
+child.on('exit', (code, signal) => {
+  if (code) console.log(`Process exit with code: ${code}`);
+  if (signal) console.log(`Process killed with signal: ${signal}`);
+  console.log(`Done ✅`);
+});
